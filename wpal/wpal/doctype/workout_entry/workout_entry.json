@@ -1,0 +1,66 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-03-07 16:02:48.587716",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "workout",
+  "weight_kg",
+  "rep",
+  "date_and_time",
+  "comments"
+ ],
+ "fields": [
+  {
+   "fieldname": "workout",
+   "fieldtype": "Link",
+   "label": "Workout",
+   "options": "Workout"
+  },
+  {
+   "fieldname": "weight_kg",
+   "fieldtype": "Float",
+   "label": "Weight (kg)"
+  },
+  {
+   "fieldname": "rep",
+   "fieldtype": "Int",
+   "label": "Rep"
+  },
+  {
+   "fieldname": "comments",
+   "fieldtype": "Data",
+   "label": "Comments"
+  },
+  {
+   "fieldname": "date_and_time",
+   "fieldtype": "Datetime",
+   "label": "Date and Time"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-03-07 16:04:49.742425",
+ "modified_by": "Administrator",
+ "module": "Wpal",
+ "name": "Workout Entry",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

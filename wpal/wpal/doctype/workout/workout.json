@@ -1,0 +1,51 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:workout_name",
+ "creation": "2025-03-07 16:01:22.538114",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "workout_name",
+  "target"
+ ],
+ "fields": [
+  {
+   "fieldname": "workout_name",
+   "fieldtype": "Data",
+   "label": "Workout Name",
+   "unique": 1
+  },
+  {
+   "fieldname": "target",
+   "fieldtype": "Select",
+   "label": "Target",
+   "options": "Leg\nBack"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-03-07 16:02:31.374609",
+ "modified_by": "Administrator",
+ "module": "Wpal",
+ "name": "Workout",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
