@@ -1,34 +1,27 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:workout_name",
- "creation": "2025-03-07 16:01:22.538114",
+ "autoname": "field:target",
+ "creation": "2025-03-08 16:01:00.691145",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "workout_name",
   "target"
  ],
  "fields": [
   {
-   "fieldname": "workout_name",
-   "fieldtype": "Data",
-   "label": "Workout Name",
-   "unique": 1
-  },
-  {
    "fieldname": "target",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Target",
-   "options": "Target"
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-08 16:05:28.294007",
+ "modified": "2025-03-08 16:01:24.066551",
  "modified_by": "Administrator",
  "module": "Wpal",
- "name": "Workout",
+ "name": "Target",
  "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
