@@ -1,0 +1,126 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+        }
+        .remove-btn {
+            color: red;
+            cursor: pointer;
+        }
+    </style>
+
+    <div class="container">
+        <h2 class="text-center">Workout Entry</h2>
+        <form id="workout-form">
+            
+            <!-- Date Input -->
+            <div class="mb-3">
+                <label class="form-label">Date:</label>
+                <input type="date" id="date" class="form-control" required>
+            </div>
+
+            <!-- Time Input -->
+            <div class="mb-3">
+                <label class="form-label">Time:</label>
+                <input type="time" id="time" class="form-control" required>
+            </div>
+
+            <!-- Workout Dropdown -->
+            <div class="mb-3">
+                <label class="form-label">Workout:</label>
+                <select id="workout" class="form-select" required>
+                    <option value="">Select Workout</option>
+                    {% for workout in workouts %}
+                        <option value="{{ workout.workout_name }}">{{ workout.workout_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Comments -->
+            <div class="mb-3">
+                <label class="form-label">Comments:</label>
+                <input type="text" id="comments" class="form-control">
+            </div>
+
+            <!-- Workout Sets -->
+            <h4>Workout Sets</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Weight (kg)</th>
+                        <th>Reps</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="sets-table"></tbody>
+            </table>
+            <button type="button" class="btn btn-primary" onclick="addSet()">Add Set</button>
+            <br><br>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-success w-100">Submit</button>
+        </form>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function addSet() {
+            let table = document.getElementById("sets-table");
+            let row = document.createElement("tr");
+
+            row.innerHTML = `
+                <td><input type="number" class="form-control weight" required></td>
+                <td><input type="number" class="form-control reps" required></td>
+                <td><span class="remove-btn" onclick="removeSet(this)">❌</span></td>
+            `;
+
+            table.appendChild(row);
+        }
+
+        function removeSet(element) {
+            element.closest("tr").remove();
+        }
+        document.getElementById("workout-form").onsubmit = function(event) {
+    event.preventDefault();
+
+    let sets = [];
+    document.querySelectorAll("#sets-table tr").forEach(row => {
+        let weight = row.querySelector(".weight").value;
+        let reps = row.querySelector(".reps").value;
+        sets.push({ weightkg: parseFloat(weight), rep: parseInt(reps) });
+    });
+
+    frappe.call({
+        method: "wpal.www.workout.create_workout_entry",  // Call custom API
+        args: {
+            date: document.getElementById("date").value,
+            time: document.getElementById("time").value,
+            workout: document.getElementById("workout").value,
+            comments: document.getElementById("comments").value,
+            sets: JSON.stringify(sets)  // Convert list to JSON string
+        },
+        callback: function(response) {
+            if (response.message.status === "success") {
+                alert(response.message.message);
+                location.reload();
+            } else {
+                alert("Error: " + response.message.message);
+            }
+        }
+    });
+};
+    </script>
+{% endblock %}
