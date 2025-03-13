@@ -83,7 +83,7 @@ app_license = "mit"
 # ------------
 
 # before_install = "wpal.install.before_install"
-# after_install = "wpal.install.after_install"
+after_install = "wpal.install.after_install"
 
 # Uninstallation
 # ------------
