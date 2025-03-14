@@ -1,4 +1,5 @@
 import frappe
+from datetime import datetime, timedelta
 
 def get_context(context):
     # Fetch all targets
@@ -15,10 +16,33 @@ def get_context(context):
             target_workouts[target] = []
         target_workouts[target].append(workout["workout_name"])
 
+    # Fetch last 10 workout entries
+    workout_history = frappe.get_all(
+        "Workout Entry",
+        fields=["date", "time", "workout", "comments"],
+        order_by="date desc, time desc",
+        limit_page_length=10
+    )
+
+    # Get the start of the current week (Monday)
+    today = datetime.today()
+    start_of_week = today - timedelta(days=today.weekday())  # Monday of the current week
+
+    # Fetch unique targets along with date and day for workouts done in the current week
+    weekly_targets = frappe.db.sql("""
+        SELECT DISTINCT WE.date, DAYNAME(WE.date) AS day, W.target 
+        FROM `tabWorkout Entry` WE
+        JOIN `tabWorkout` W ON WE.workout = W.name
+        WHERE WE.date >= %s
+        ORDER BY WE.date ASC
+    """, (start_of_week.strftime('%Y-%m-%d')), as_dict=True)
+
     # Pass data to the template
     context.targets = targets
     context.target_workouts = target_workouts
-
+    context.workout_history = workout_history
+    context.weekly_targets = weekly_targets
+    
 @frappe.whitelist()
 def create_workout_entry(date, time, workout, comments, sets):
     try:

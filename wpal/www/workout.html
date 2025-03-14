@@ -83,6 +83,35 @@
         </form>
     </div>
 
+<!-- Weekly Target Summary -->
+<div class="container mt-5">
+    <h3 class="text-center">Weekly Target Summary</h3>
+    <table class="table table-bordered text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Date</th>
+                <th>Day</th>
+                <th>Target</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if weekly_targets %}
+                {% for entry in weekly_targets %}
+                    <tr>
+                        <td>{{ entry.date }}</td>
+                        <td>{{ entry.day }}</td>
+                        <td>{{ entry.target }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="3" class="text-muted">No workouts recorded this week</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+
     <!-- JavaScript -->
     <script>
         function addSet() {
