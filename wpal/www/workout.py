@@ -1,7 +1,23 @@
 import frappe
 
 def get_context(context):
-    context.workouts = frappe.get_all("Workout", fields=["workout_name"])
+    # Fetch all targets
+    targets = frappe.get_all("Target", fields=["name as target_name"])
+
+    # Fetch all workouts with their target
+    workouts = frappe.get_all("Workout", fields=["name as workout_name", "target"])
+
+    # Organize workouts by target
+    target_workouts = {}
+    for workout in workouts:
+        target = workout["target"]
+        if target not in target_workouts:
+            target_workouts[target] = []
+        target_workouts[target].append(workout["workout_name"])
+
+    # Pass data to the template
+    context.targets = targets
+    context.target_workouts = target_workouts
 
 @frappe.whitelist()
 def create_workout_entry(date, time, workout, comments, sets):
