@@ -5,11 +5,12 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "date",
+  "time",
   "workout",
-  "weight_kg",
-  "rep",
-  "date_and_time",
-  "comments"
+  "comments",
+  "sets_section",
+  "table_tqlh"
  ],
  "fields": [
   {
@@ -19,29 +20,34 @@
    "options": "Workout"
   },
   {
-   "fieldname": "weight_kg",
-   "fieldtype": "Float",
-   "label": "Weight (kg)"
-  },
-  {
-   "fieldname": "rep",
-   "fieldtype": "Int",
-   "label": "Rep"
-  },
-  {
    "fieldname": "comments",
    "fieldtype": "Data",
    "label": "Comments"
   },
   {
-   "fieldname": "date_and_time",
-   "fieldtype": "Datetime",
-   "label": "Date and Time"
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "time",
+   "fieldtype": "Time",
+   "label": "Time"
+  },
+  {
+   "fieldname": "sets_section",
+   "fieldtype": "Section Break",
+   "label": "Sets"
+  },
+  {
+   "fieldname": "table_tqlh",
+   "fieldtype": "Table",
+   "options": "Workout Set Table"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-07 16:04:49.742425",
+ "modified": "2025-03-12 16:46:33.685362",
  "modified_by": "Administrator",
  "module": "Wpal",
  "name": "Workout Entry",

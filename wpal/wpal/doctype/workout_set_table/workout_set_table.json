@@ -1,0 +1,40 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-03-12 16:43:31.463345",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "weightkg",
+  "rep"
+ ],
+ "fields": [
+  {
+   "fieldname": "weightkg",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Weight(kg)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rep",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Rep",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-03-12 16:44:17.288627",
+ "modified_by": "Administrator",
+ "module": "Wpal",
+ "name": "Workout Set Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -5,3 +5,4 @@
 [post_model_sync]
 # Patches added in this section will be executed after doctypes are migrated
 wpal.patches.0_0_2.insert_target_values
+wpal.patches.1_0_0_insert_target_values

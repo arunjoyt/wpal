@@ -1,0 +1,54 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"_Ma-diWbz6\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Wpal</span>\",\"col\":12}},{\"id\":\"XyJLQFxSI_\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Workout Entry\",\"col\":3}},{\"id\":\"qtUivCZXqJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Workout\",\"col\":3}},{\"id\":\"lZdYlWiC8q\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Target\",\"col\":3}}]",
+ "creation": "2025-03-15 10:13:45.713615",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "income",
+ "idx": 0,
+ "indicator_color": "red",
+ "is_hidden": 0,
+ "label": "Wpal",
+ "links": [],
+ "modified": "2025-03-15 10:16:51.447349",
+ "modified_by": "Administrator",
+ "module": "Wpal",
+ "name": "Wpal",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 28.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Workout",
+   "link_to": "Workout",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Target",
+   "link_to": "Target",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Workout Entry",
+   "link_to": "Workout Entry",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Wpal"
+}
