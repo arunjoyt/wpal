@@ -65,3 +65,22 @@ def create_workout_entry(date, time, workout, comments, sets):
     except Exception as e:
         frappe.log_error(f"Workout Entry Error: {str(e)}")
         return {"status": "error", "message": str(e)}
+
+@frappe.whitelist()
+def create_workout(workout_name, target):
+    # Check if workout already exists
+    if frappe.db.exists("Workout", workout_name):
+        return {"status": "error", "message": "Workout already exists."}
+
+    # Create a new Workout document
+    workout = frappe.get_doc({
+        "doctype": "Workout",
+        "workout_name": workout_name,
+        "target": target
+    })
+
+    try:
+        workout.insert()
+        return {"status": "success", "message": "Workout created successfully."}
+    except Exception as e:
+        return {"status": "error", "message": str(e)}

@@ -24,7 +24,7 @@
 
     <div class="container">
         <h2 class="text-center">Workout Entry</h2>
-        <form id="workout-form">
+        <form id="workout-entry-form">
             
             <!-- Date Input -->
             <div class="mb-3">
@@ -112,6 +112,27 @@
     </table>
 </div>
 
+    <!-- New Workout Section -->
+    <div class="container mt-4">
+        <h2 class="text-center">Create Workout</h2>
+        <form id="workout-form">
+            <div class="mb-3">
+                <label class="form-label">Workout Name:</label>
+                <input type="text" id="workout-name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Target:</label>
+                <select id="workout-target" class="form-select" required>
+                    <option value="">Select Target</option>
+                    {% for target in targets %}
+                        <option value="{{ target.target_name }}">{{ target.target_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Add Workout</button>
+        </form>
+    </div>
+
     <!-- JavaScript -->
     <script>
         function addSet() {
@@ -130,7 +151,7 @@
         function removeSet(element) {
             element.closest("tr").remove();
         }
-        document.getElementById("workout-form").onsubmit = function(event) {
+        document.getElementById("workout-entry-form").onsubmit = function(event) {
     event.preventDefault();
 
     let sets = [];
@@ -191,5 +212,25 @@ function updateWorkouts() {
         document.getElementById("date").value = dateStr;
         document.getElementById("time").value = timeStr;
     });
+
+    document.getElementById("workout-form").onsubmit = function(event) {
+            event.preventDefault();
+            
+            frappe.call({
+                method: "wpal.www.workout.create_workout",  // New Frappe API method
+                args: {
+                    workout_name: document.getElementById("workout-name").value,
+                    target: document.getElementById("workout-target").value
+                },
+                callback: function(response) {
+                    if (response.message.status === "success") {
+                        alert(response.message.message);
+                        location.reload();
+                    } else {
+                        alert("Error: " + response.message.message);
+                    }
+                }
+            });
+        };
     </script>
 {% endblock %}
