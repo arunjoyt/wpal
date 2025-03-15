@@ -42,6 +42,7 @@ def get_context(context):
     context.target_workouts = target_workouts
     context.workout_history = workout_history
     context.weekly_targets = weekly_targets
+    context.no_cache = 1
     
 @frappe.whitelist()
 def create_workout_entry(date, time, workout, comments, sets):
