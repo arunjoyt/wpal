@@ -242,3 +242,11 @@ after_install = "wpal.install.after_install"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+fixtures = [
+    {
+        "doctype": "Workspace",
+        "filters": {
+            "module": ["in", ["wpal",]]
+        }
+    }
+]
